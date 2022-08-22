@@ -1,0 +1,11 @@
+# VSC
+.DS_Store
+
+# Marlin
+Marlin/
+
+# Fork of the old repository
+ies-index-files/
+
+# Official lumenPNP repository
+lumenpnp/
