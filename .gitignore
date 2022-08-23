@@ -9,3 +9,9 @@ ies-index-files/
 
 # Official lumenPNP repository
 lumenpnp/
+
+# OpenPNP
+openpnp/
+
+# LumenPNP-STLS
+LumenPnP-STLs-*/

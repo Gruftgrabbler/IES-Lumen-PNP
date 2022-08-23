@@ -2,9 +2,12 @@
 
 Repository with files and descriptions about the IES lumenPnP.
 
-You can find the official documentation [here](https://docs.opulo.io).
+- You can find the official documentation [here](https://docs.opulo.io).
+- Official [releases](https://github.com/opulo-inc/lumenpnp/releases)
 
-The official repository can be found [here](https://github.com/opulo-inc/lumenpnp.git)
+- The official repository can be found [here](https://github.com/opulo-inc/lumenpnp.git)
+
+- STLs I think are quite interesting on [printables](https://www.printables.com/social/127530-gruftgrabbler/collections/229786)
 
 # Build
 The build is mostly done after the documentation, but uses some modifications here and there. I've tried to insert all custom STLs into this repository.
@@ -66,12 +69,23 @@ Instead you have to `pins_OPULO_LUMEN_REV3.h` to `Marlin/src/pins/stm32f4/`
 
 # OpenPNP
 
+In order to use the existing OpenPNP configuration copy the `machine.xml` file from this repository into **TODO**
 
 [OpenPNP YouTube Tutorial](https://www.youtube.com/watch?v=vuFalyzcCZA)
+
+## Demo Board
+
+The Gerbers for the OpenPNP Demo board can be found in the openPNP repository
+
+```
+git clone https://github.com/openpnp/openpnp.git
+cd openpnp/samples/demoboard
+```
 
 
 # Next Steps
 
+- [ ] The arm holding the right cable-tube is really shitty. Another solution should be found.
 - [x] Setup all Axis in OpenPNP
 - [ ] Lens Calibration
 - [ ] Maybe add an additional stepper driver for the second Y-Axis motor to the auxillary driver
