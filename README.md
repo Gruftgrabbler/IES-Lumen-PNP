@@ -1,16 +1,30 @@
 # IES-Lumen-PNP
 
 Repository with files and descriptions about the IES lumenPnP.
+This readme contains all of the sub repositories you should checkout to have all files together.
 
-- You can find the official documentation [here](https://docs.opulo.io).
-- Official [releases](https://github.com/opulo-inc/lumenpnp/releases)
+- You can find the official documentation [here](https://docs.opulo.io). You can skip the assembly part and start at [Testing](https://docs.opulo.io/docs/testing/).
+
+- Official [releases](https://github.com/opulo-inc/lumenpnp/releases). Don't use the firmware directly. Always compile it yourself.
 
 - The official repository can be found [here](https://github.com/opulo-inc/lumenpnp.git)
 
 - STLs I think are quite interesting on [printables](https://www.printables.com/social/127530-gruftgrabbler/collections/229786)
 
+**IMPORTANT: This repository contains a `machine.xml`file with all previously done calibration. You have to copy them into your openpnp installation folder:
+
+```
+Configuration files are located in your home directory, under a subdirectory called .openpnp2.
+
+On Mac this will typically be /Users/[username]/.openpnp2.
+
+On Windows 2000, XP and 2003 it will be C:\Documents and Settings[username].openpnp2.
+
+On Windows Vista and above it’s C:\Users[username].openpnp2.
+```
+**
 # Build
-The build is mostly done after the documentation, but uses some modifications here and there. I've tried to insert all custom STLs into this repository.
+The build of the machine is almost done. Only missing an additional staging plate and feeders. There are some custom modifications implemented. The associated STLs should be in this repository.
 
 ## Staging Plate
 
@@ -19,6 +33,8 @@ This repository contains gerbers for the staging plate as well as .dxf version.
 You can order an aluminum version of the staging plate at [PCBWay](https://www.pcbway.com) using the gerbers. Unfortunately JLCPCB does not offer manufacturing with this dimensions.
 
 Or if you want to order at [cutworks](https://www.cutworks.com/en/) just use the .dxf file.
+
+**IMPORTANT:** The first stating plate which is mounted on the machine was ordered with too small holes. You need to drill larger holes with 3.3mm drills. Be very careful and drill very slowly: Use 800RPM and cutting oil.
 
 ## Custom STLs
 - assembly-belt-clamp003 v3.stl : Small extrusion to ensure that the Y-Axis Limit switch is actually triggered.
@@ -68,27 +84,41 @@ Instead you have to `pins_OPULO_LUMEN_REV3.h` to `Marlin/src/pins/stm32f4/`
 
 
 # OpenPNP
+For a successful connection first connect the machine to your computer then open openPNP.
 
 In order to use the existing OpenPNP configuration copy the `machine.xml` file from this repository into **TODO**
 
 [OpenPNP YouTube Tutorial](https://www.youtube.com/watch?v=vuFalyzcCZA)
 
+## Cameras
+
+**Done:** ~~First of all there is a small screw on the side of the camera which you can adjust the focus of the lense. Unfortunately it is impossible to reach the screw while the camera is mounted. So you need to unmount the camera from the machine. Unscrew the screw, mount the camera again and then rotate the camera until the picture gets sharp enough, then unmount the camera and save the screw in position.. And that has to be done for both cameras.~~
+
+**Note:** 
+Unexpectedly the camera does have a pretty high focal length, and therefore a "high zoom". That makes it impossible for the machine to completely see large objects. This could be a problem for placing big components, but should be fine for small ones. **BUT that means that the camera can not be calibrated accordingly to the [docs](https://docs.opulo.io/openpnp/calibration/camera-fisheye-cal/). Logically the camera has such a high focal length, that a fisheye effect does not occur anyway...**
+
+## How to setup a Job
+
+[YouTube Tutorial](https://www.youtube.com/watch?v=75hHtclelN4)
+
 ## Demo Board
 
-The Gerbers for the OpenPNP Demo board can be found in the openPNP repository
+The Gerbers for the OpenPNP Demo board can be found in the openPNP repository. You have to follow the instructions from the []() or watch this [youtube video](https://www.youtube.com/watch?v=75hHtclelN4)
 
 ```
 git clone https://github.com/openpnp/openpnp.git
 cd openpnp/samples/demoboard
 ```
 
-
 # Next Steps
 
-- [ ] The arm holding the right cable-tube is really shitty. Another solution should be found.
+- [x] The arm holding the right cable-tube is really shitty. Another solution should be found. --> I think the new arm is sufficient enough.
 - [x] Setup all Axis in OpenPNP
-- [ ] Lens Calibration
-- [ ] Maybe add an additional stepper driver for the second Y-Axis motor to the auxillary driver
+- [ ] Mount Datum Board on staging plate 
+- [ ] **IMPORTANT:** [Homing Fiducial](https://docs.opulo.io/openpnp/calibration/homing-fiducial/) 
+- [?] Lens Calibration -> Since the focal length is so high, it might be impossible to do.
+- [ ] Optional: Maybe add an additional stepper driver for the second Y-Axis motor to the auxillary driver
 - [ ] Finish the OpenPNP settings
 - [ ] Setup a Job
 - [ ] Run the PNP on the Test PCBs
+- [ ] Build the [drag feeders](https://www.youtube.com/watch?v=Gm1oQjoRitc). STLs can be found [here](https://www.printables.com/model/221378-lumen-pnp-passive-drag-feeder)
